@@ -1,62 +1,41 @@
 Rails.application.routes.draw do
-  namespace :member do
-    get 'profiles/show'
-    get 'profiles/edit'
-  end
-  namespace :member do
-    get 'homes/top'
-    get 'homes/about'
-  end
-  namespace :admin do
-    get 'bookmarks/index'
-  end
-  namespace :admin do
-    get 'trainings/index'
-    get 'trainings/show'
-    get 'trainings/edit'
-  end
-  namespace :admin do
-    get 'training_genres/index'
-    get 'training_genres/edit'
-  end
-  namespace :admin do
-    get 'log_genres/index'
-    get 'log_genres/edit'
-  end
-  namespace :admin do
-    get 'members/index'
-    get 'members/show'
-    get 'members/edit'
-  end
-  namespace :admin do
-    get 'logs/index'
-    get 'logs/new'
-    get 'logs/show'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :member do
-    get 'bookmarks/index'
-  end
-  namespace :member do
-    get 'training/index'
-    get 'training/show'
-    get 'training/edit'
-  end
+
+  root to: "member/homes#top"
+
 # メンバー用
-# URL /customers/sign_in ...
 devise_for :members,skip: [:passwords], controllers: {
   registrations: "member/registrations",
   sessions: 'member/sessions'
 }
 
+namespace :member do
+  get 'members/show' => 'members#show'
+  get 'members/edit' => 'members#edit'
+  patch 'members/update' => 'members#update'
+  patch 'members/withdraw' => 'members#withdraw', as: 'members_withdraw'
+  get 'bookmarks/index'
+  resources :trainings, only: [:index, :show, :edit, :update]
+  resources :logs, only: [:index, :new, :create, :show]
+  post 'goods/:id' => 'goods#create', as: 'create_good'
+  delete 'goods/:id' => 'goods#destroy'
+  end
 
 # 店長用
-# URL /admin/sign_in ...
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
+
+ namespace :admin do
+   root :to => 'admins/top#top'
+   resources :members, only: [:index, :show, :edit, :update]
+   resources :trainings, only: [:index, :show, :edit, :update]
+   resources :training_genres, only: [:index, :create, :edit, :update]
+   resources :logs, only: [:index, :new, :create, :show, :destroy]
+   resources :log_genres, only: [:index, :create, :edit, :update]
+   get 'bookmarks/index'
+   post 'goods/:id' => 'goods#create', as: 'create_good'
+   delete 'goods/:id' => 'goods#destroy'
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

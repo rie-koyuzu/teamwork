@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_18_124424) do
+ActiveRecord::Schema.define(version: 2023_03_20_030038) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "employee_number"
+    t.string "employee_number", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -25,14 +25,49 @@ ActiveRecord::Schema.define(version: 2023_03_18_124424) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "bookmarks", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.integer "log_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "goods", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.integer "log_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "homes", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "log_genres", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "logs", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.integer "log_genre_id", null: false
+    t.string "title", null: false
+    t.text "body", null: false
+    t.integer "importance", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "members", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "last_name"
-    t.string "first_name"
-    t.string "last_name_eng"
-    t.string "first_name_eng"
-    t.string "employee_number"
+    t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "last_name_eng", null: false
+    t.string "first_name_eng", null: false
+    t.string "employee_number", null: false
     t.string "profile_image"
     t.boolean "is_deleted", default: false, null: false
     t.string "reset_password_token"
@@ -40,8 +75,24 @@ ActiveRecord::Schema.define(version: 2023_03_18_124424) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "affiliation", null: false
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
+  end
+
+  create_table "training_genres", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "trainings", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.integer "training_genre_id", null: false
+    t.text "feedback", null: false
+    t.integer "progress", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

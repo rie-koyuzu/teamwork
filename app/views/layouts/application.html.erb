@@ -2,15 +2,51 @@
 <html>
   <head>
     <title>Teamwork</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
-  </body>
+<!-- メンバーがログインしている時 -->
+  <% if member_signed_in? %>
+   <body class="d-flex flex-column vh-100">
+    <!-- ヘッダー -->
+    <div id="header">
+      <%= render "layouts/header" %>
+    </div>
+    <!-- Body部分 -->
+    <div class="container" style="margin-top: 20px;">
+      <%= yield %>
+    </div>
+
+<!-- 店長がログインしている時 -->
+    <% elsif admin_signed_in? %>
+    <body id="wrapper" style="background-color: #EEEEEE; font-family: HiraMinPro-W6; color: #000000;">
+    <!-- ヘッダー -->
+    <div id="header">
+      <%= render "layouts/header" %>
+    </div>
+    <!-- Body部分 -->
+    <div class="container" style="margin-top: 20px;">
+      <%= yield %>
+    </div>
+
+  <!-- ログイン前 -->
+   <% else %>
+    <body id="wrapper" style="background-color: white; font-family: HiraMinPro-W6; color: #000000; ">
+
+    <!-- ヘッダー -->
+    <div id="header">
+      <%= render "layouts/header" %>
+    </div>
+
+    <!-- Body部分 -->
+    <div class="container" style="margin-top: 20px;">
+      <%= yield %>
+    </div>
+
+  <% end %>
 </html>

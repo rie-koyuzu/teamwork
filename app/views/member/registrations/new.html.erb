@@ -1,7 +1,38 @@
-<h2>Sign up</h2>
+<h2>新規登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "member/shared/error_messages", resource: resource %>
+
+
+  <div class="field">
+  <%= f.label :last_name %><br>
+  <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+  <%= f.label :first_name %><br>
+  <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+  <%= f.label :last_name_eng %><br>
+  <%= f.text_field :last_name_eng %>
+  </div>
+
+  <div class="field">
+  <%= f.label :first_name_eng %><br>
+  <%= f.text_field :first_name_eng %>
+  </div>
+
+  <div class="field">
+  <%= f.label :employee_number %><br>
+  <%= f.text_field :employee_number %>
+  </div>
+
+  <div class="field">
+  <%= f.label :affiliation %><br>
+  <%= f.text_field :affiliation %>
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />
@@ -25,5 +56,4 @@
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
-
 <%= render "member/shared/links" %>
