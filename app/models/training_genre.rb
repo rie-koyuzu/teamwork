@@ -1,3 +1,3 @@
 class TrainingGenre < ApplicationRecord
-	belongs_to :training
+	has_many :training
 end

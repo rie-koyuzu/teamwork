@@ -3,8 +3,8 @@ class Member::LogsController < ApplicationController
 
   def index
     @member = current_member
-    @logs = Log.new
-    @logs_all = Log.all
+    @log = Log.new
+    @logs = Log.all
   end
 
   def new

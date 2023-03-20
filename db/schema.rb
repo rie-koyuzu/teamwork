@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2023_03_20_030038) do
   end
 
   create_table "training_genres", force: :cascade do |t|
-    t.integer "member_id", null: false
+    t.string "menu", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

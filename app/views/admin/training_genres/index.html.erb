@@ -1,2 +1,34 @@
-<h1>Admin::TrainingGenres#index</h1>
-<p>Find me in app/views/admin/training_genres/index.html.erb</p>
+<div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+
+      <h2>トレーニングメニュー編集</h2><br>
+
+    <div class="form-group col-md-10">
+    <%= form_with model: @training_genre, url: admin_training_genres_path do |f| %>
+          <%= f.label :リスト %>
+          <%= f.text_field :menu,class: "col-md-4" %>
+          <%= f.submit "追加" ,class: "btn btn-primary" %>
+    <% end %>
+    </div>
+
+    <br>
+
+      <table class="table genre-index">
+        <thead>
+          <tr>
+            <th>リスト</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @training_genres.each do |training_genre| %>
+            <tr>
+              <td><%= training_genre.menu %></td>
+              <td><%= link_to "編集する", edit_admin_training_genre_path(training_genre), class: "btn btn-primary" %></td>
+            </tr>
+            <% end %>
+        </tbody>
+      </table>
+  </div>
+</div>
+

@@ -1,35 +1,37 @@
 <!--マイページ -->
-
-<div class="row">
-  <div class="col-xs-12">
-    <h3><strong>マイページ</strong></h3>
-        <table class="table table-bordered table-condensed">
-                <strong class="information-link">登録情報</strong>
-                <%= link_to " 編集する", member_members_edit_path, class: "glyphicon glyphicon-pencil btn btn-success" %>
-            <tr>
-                <td class="col-xs-2">氏名</td>
-                <td><%= current_member.last_name %>&nbsp;<%= current_member.first_name %></td>
-            </tr>
-
-            <tr>
-                <td class="col-xs-2">KANA</td>
-                <td><%= current_member.last_name_eng %>&nbsp;<%= current_member.first_name_eng %></td>
-            </tr>
-
-            <tr>
-                <td class="col-xs-2">社員番号</td>
-                <td><%= current_member.employee_number %></td>
-            </tr>
-
-            <tr>
-                <td class="col-xs-2">所属部署</td>
-                <td><%= current_member.affiliation %></td>
-            </tr>
-
-            <tr>
-                <td class="col-xs-2">メールアドレス</td>
-                <td><%= current_member.email %></td>
-            </tr>
-
-  </div>
-</div>
+<h1>マイページ</h1>
+   <div class="container">
+     <div class="row">
+       <div class="col-xs-3">
+         <table class="table table-bordered table-condensed">
+           <strong class="information-link">プロフィール</strong>
+             <tr>
+               <td class="col-xs-2">氏名</td>
+               <td><%= current_member.last_name %>&nbsp;<%= current_member.first_name %></td>
+             </tr>
+             <tr>
+               <td class="col-xs-2">KANA</td>
+               <td><%= current_member.last_name_eng %>&nbsp;<%= current_member.first_name_eng %></td>
+             </tr>
+             <tr>
+               <td class="col-xs-2">社員番号</td>
+               <td><%= current_member.employee_number %></td>
+             </tr>
+             <tr>
+               <td class="col-xs-2">所属部署</td>
+               <td><%= current_member.affiliation %></td>
+             </tr>
+             <tr>
+               <td class="col-xs-2">メールアドレス</td>
+               <td><%= current_member.email %></td>
+             </tr>
+         </table>
+       </div>
+      </div>
+    <div class="row">
+     <div class="col-xs-12">
+       <%= link_to "編集する", member_members_edit_path, class: "glyphicon glyphicon-pencil btn btn-success" %>
+       <%= link_to "トレーニング", member_trainings_path, class: "glyphicon glyphicon-pencil btn btn-success" %>
+     </div>
+    </div>
+   </div>

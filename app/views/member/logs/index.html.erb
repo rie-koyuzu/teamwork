@@ -1,3 +1,15 @@
-伝達ログ
+<div class="container">
+	<h2 style="margin: 20px 0;">共有ログ</h2>
+      <%= link_to "新規作成", new_member_log_path, class:"btn btn-lg btn-primary" %>
+　　<div class="row">
 
-<%= link_to "新規作成", new_member_log_path %>
+    <% @logs.each do |log| %>
+    <div class="col-xs-3" style="padding-right: 30px; padding-left: 10px; margin: 10px 0;">
+    <%= log.title %><br>
+    <%= log.body %><br>
+    <%= log.log_genre_id %><br>
+    更新者：<%= log.member_id %>
+    <% end %>
+    </div>
+	</div>
+</div>

@@ -1,4 +1,4 @@
-<h2>Log in</h2>
+<h2>メンバーログインはこちら</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -22,4 +22,5 @@
     <%= f.submit "Log in" %>
   </div>
 <% end %>
-<%= render "member/shared/links" %>
+<%= render "member/shared/links" %><br>
+<%= link_to "店長はこちら", new_admin_session_path, class:"btn btn-lg btn-primary" %>
