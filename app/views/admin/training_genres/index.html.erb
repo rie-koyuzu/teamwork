@@ -5,8 +5,10 @@
 
     <div class="form-group col-md-10">
     <%= form_with model: @training_genre, url: admin_training_genres_path do |f| %>
-          <%= f.label :リスト %>
-          <%= f.text_field :menu,class: "col-md-4" %>
+          <%= f.label :メニュー %>
+          <%= f.text_field :menu,class: "col-md-8" %><br>
+          <%= f.label :目安時間 %>
+          <%= f.text_field :time,class: "col-md-2" %> 時間<br>
           <%= f.submit "追加" ,class: "btn btn-primary" %>
     <% end %>
     </div>
@@ -16,7 +18,7 @@
       <table class="table genre-index">
         <thead>
           <tr>
-            <th>リスト</th>
+            <th>TRリスト</th>
           </tr>
         </thead>
 
@@ -24,6 +26,7 @@
           <% @training_genres.each do |training_genre| %>
             <tr>
               <td><%= training_genre.menu %></td>
+              <td><%= training_genre.time %>時間</td>
               <td><%= link_to "編集する", edit_admin_training_genre_path(training_genre), class: "btn btn-primary" %></td>
             </tr>
             <% end %>

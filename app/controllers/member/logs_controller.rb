@@ -1,6 +1,5 @@
 class Member::LogsController < ApplicationController
 
-
   def index
     @member = current_member
     @log = Log.new

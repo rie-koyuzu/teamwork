@@ -1,2 +1,23 @@
-<h1>Admin::Logs#new</h1>
-<p>Find me in app/views/admin/logs/new.html.erb</p>
+<!-- 店長側ログ作成ページ -->
+ログ新規作成
+<%= form_with model: @log, url: member_logs_path do |f| %>
+  <tr>
+   <th>ジャンル</th>
+   <td><%= f.collection_select :log_genre_id, LogGenre.all ,:id, :name, include_blank: "--選択してください--" %></td>
+  </tr>
+  <br>
+  <br>
+  <tr>
+   <th>タイトル</th>
+   <td><%= f.text_field :title %></td>
+  </tr>
+  <br>
+  <br>
+<!-- ここに重要度選択のラジオボタンを作成したい -->
+  <tr>
+   <th>共有内容</th>
+   <td><%= f.text_area :body %></td>
+  </tr>
+  <br>
+  <%= f.submit '投稿' %>
+<% end %>

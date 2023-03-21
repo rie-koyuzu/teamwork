@@ -2,13 +2,13 @@
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light">
        <div class="container">
-         <a class="navbar-brand p-3" href="/"><%= "社員番号と名前を入れたい" %></a>
+         <a class="navbar-brand p-3" href="/"><%= "コミュニケーションサイト" %></a>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
 
         <% if member_signed_in? %>
           <!--カスタマーがログインしている時 -->
-          <li class="nav-item"><strong><%#= current_customer.last_name %></strong></li>
+          <li class="nav-item"><%= current_member.employee_number %> <%= current_member.last_name %><%= current_member.first_name %></li>
           <li class="nav-item"><%= link_to "伝達ログ", member_logs_path, class: "btn btn-Light" %></li>
           <li class="nav-item"><%= link_to "マイページ", member_members_show_path, class: "btn btn-Light" %></li>
           <li class="nav-item"><%= link_to "ブックマーク", member_bookmarks_index_path, class: "btn btn-Light" %></li>
@@ -17,7 +17,6 @@
         <% elsif admin_signed_in? %>
           <!-- 管理者がログインしている時 -->
           <li class="nav-item"><%= link_to "伝達ログ", admin_logs_path, class: "btn btn-Light" %></li>
-          <li class="nav-item"><%= link_to "マイページ", member_members_show_path, class: "btn btn-Light" %></li>
           <li class="nav-item"><%= link_to "メンバー一覧", admin_members_path, class: "btn btn-Light" %></li>
           <li class="nav-item"><%= link_to "トレーニング管理", admin_trainings_path, class: "btn btn-Light" %></li>
           <li class="nav-item"><%= link_to "ブックマーク", admin_bookmarks_index_path, class: "btn btn-Light" %></li>

@@ -1,2 +1,33 @@
-<h1>Admin::Members#show</h1>
-<p>Find me in app/views/admin/members/show.html.erb</p>
+<div class="container">
+     <div class="row">
+       <div class="col-xs-3">
+         <table class="table table-bordered table-condensed">
+           <strong class="information-link">プロフィール</strong>
+             <tr>
+             	<td class="col-xs-2">氏名</td>
+             	<td><%= @member.last_name %><%= @member.first_name %></td>
+             </tr>
+             <tr>
+              <th>English</th>
+              <td><%= @member.last_name_eng %><%= @member.first_name_eng %></td>
+            </tr>
+            <tr>
+              <th>社員番号</th>
+              <td><%= @member.employee_number %></td>
+            </tr>
+             <tr>
+              <th>所属部署</th>
+              <td><%= @member.affiliation %></td>
+            </tr>
+            <tr>
+              <th>所属部署</th>
+              <td><%= @member.email %></td>
+            </tr>
+
+         </table>
+         <div class="row">
+         	<%= link_to "編集する", edit_admin_member_path(@member), class: "btn btn-success" %>
+        </div>
+       </div>
+     </div>
+</div>

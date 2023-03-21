@@ -26,6 +26,6 @@ class Admin::TrainingGenresController < ApplicationController
 
   private
   def training_genre_params
-    params.require(:training_genre).permit(:menu)
+    params.require(:training_genre).permit(:menu, :time)
   end
 end

@@ -1,5 +1,12 @@
 class Member::MembersController < ApplicationController
+
   def index
+    if params[:is_deleted]
+			member = Member.where(is_deleted: true)
+			@members = member.order(:id).page(params[:page])
+		else
+			@members = Member.order(:id).page(params[:page])
+		end
   end
 
   # マイページへのアクション
@@ -14,7 +21,7 @@ class Member::MembersController < ApplicationController
 
   #プロフィール更新
   def update
-    @member =  current_member
+    @member = Member.find(params[:id])
     if @member.update(member_params)
       redirect_to member_members_show_path
     end

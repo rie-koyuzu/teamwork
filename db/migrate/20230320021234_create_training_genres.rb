@@ -3,7 +3,7 @@ class CreateTrainingGenres < ActiveRecord::Migration[6.1]
     create_table :training_genres do |t|
 
       t.string :menu, null:false
-
+      t.integer :time, null:false
       t.timestamps
     end
   end

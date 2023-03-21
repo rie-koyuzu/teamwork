@@ -4,10 +4,11 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-         has_many :log, dependent: :nullify
-         has_many :good, dependent: :destroy
-         has_many :training, dependent: :destroy
-         has_many :bookmark, dependent: :destroy
+         has_one_attached :profile_image
+         has_many :logs, dependent: :nullify
+         has_many :goods, dependent: :destroy
+         has_many :trainings, dependent: :destroy
+         has_many :bookmarks, dependent: :destroy
 
        validates :last_name,  presence: true
        validates :first_name, presence: true

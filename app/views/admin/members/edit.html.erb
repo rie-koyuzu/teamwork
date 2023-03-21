@@ -1,2 +1,35 @@
-<h1>Admin::Members#edit</h1>
-<p>Find me in app/views/admin/members/edit.html.erb</p>
+<div class="row">
+    <div class="col-xs-12">
+      <h3><strong>メンバー情報編集</strong></h3>
+      <%= form_with model: @member, url: admin_member_path ,method: :PATCH do |f| %>
+      	<div class="col-xs-12">
+      		<%= f.label :"氏名", class: "col-sm-3 control-label", style: "margin: 10px;" %>
+          <%= f.text_field :last_name, class: "last_name col-sm-3 form-control-static name", style: "margin: 10px;" %>
+          <%= f.text_field :first_name, class: "first_name col-sm-3 form-control-static name", style: "margin: 10px;" %>
+        </div>
+        <div class="col-xs-12">
+          <%= f.label :"KANA", class: "col-sm-3 control-label", style: "margin: 10px;" %>
+          <%= f.text_field :last_name_eng, class: "last_name_eng col-sm-3 form-control-static name", style: "margin: 10px;" %>
+          <%= f.text_field :first_name_eng, class: "first_name_eng col-sm-3 form-control-static name", style: "margin: 10px;" %>
+        </div>
+        <div class="col-xs-12">
+          <%= f.label :"社員番号", class: "col-sm-3 control-label", style: "margin: 10px;" %>
+          <%= f.text_field :employee_number, autofocus: true, autocomplete: "employee_number", class: "col-sm-6 form-control-static", style: "margin: 10px;" %>
+        </div>
+        <div class="col-xs-12">
+          <%= f.label :"所属部署", class: "col-sm-3 control-label", style: "margin: 10px;" %>
+          <%= f.text_field :affiliation, autofocus: true, autocomplete: "affiliation", class: "col-sm-6 form-control-static", style: "margin: 10px;" %>
+        </div>
+        <div class="col-xs-12">
+          <%= f.label :"メール", class: "col-sm-3 control-label", style: "margin: 10px;" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-sm-6 form-control-static", style: "margin: 10px;" %>
+        </div>
+        <div class="col-xs-12">
+          <%= f.label :"ステータス", class: "col-sm-3 control-label", style: "margin: 10px;" %>
+          <%= f.select :is_deleted, [["在籍中",false], ["退職済み",true]], class: "col-sm-6 form-control-static", style: "margin: 10px;" %>
+        </div>
+    </div>
+    <div class="actions col-xs-10 col-xs-offset-2">
+    		<%= f.submit "編集内容を保存する", class: "btn btn-primary col-sm-12", style: "margin: 10px;" %>
+    </div>
+    <% end %>

@@ -14,10 +14,9 @@ namespace :member do
   patch 'members/update' => 'members#update'
   patch 'members/withdraw' => 'members#withdraw', as: 'members_withdraw'
   get 'bookmarks/index'
-  resources :trainings, only: [:index, :show, :edit, :update]
+  resource :trainings, only: [:index, :show, :edit, :update]
   resources :logs, only: [:index, :new, :create, :show]
-  post 'goods/:id' => 'goods#create', as: 'create_good'
-  delete 'goods/:id' => 'goods#destroy'
+  resource :goods, only: [:create, :destroy]
   end
 
 # 店長用
