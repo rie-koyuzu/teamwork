@@ -7,6 +7,10 @@
        	  <%= f.text_field :menu,class: "col-md-8" %><br>
        	  <%= f.label :目安時間 %>
        	  <%= f.text_field :time,class: "col-md-2" %> 時間<br>
+       	  <%= f.radio_button :is_genres_status, :true %>
+          <%= f.label :is_genres_status, "有効"  %>
+          <%= f.radio_button :is_genres_status, :false %>
+          <%= f.label :is_genres_status, "無効" %>
        	  <%= f.submit "変更を保存する" ,class: "btn btn-primary" %>
         </div>
         <% end %>

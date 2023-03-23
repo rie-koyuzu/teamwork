@@ -6,11 +6,12 @@ class Admin::TrainingsController < ApplicationController
   end
 
   def new
-    @training = Training.new
+    @trainings = Training.new
   end
 
   def show
     @training = Training.find(params[:id])
+    @training_genres = TrainingGenre
   end
 
   def edit
@@ -25,14 +26,14 @@ class Admin::TrainingsController < ApplicationController
   end
 
   def create
-    @training = Training.new(training_params)
-    if @training.save
+    @trainings = Training.new(training_params)
+    if @trainings.save
       redirect_to admin_trainings_path(@training)
     end
   end
 
   private
   def training_params
-    params.require(:training).permit(:member_id, :training_genre_id, :feedback, :progress)
+    params.require(:training).permit(:member_id, :training_genre_id, :feedback, :progress, :title, :time, :introductio)
   end
 end

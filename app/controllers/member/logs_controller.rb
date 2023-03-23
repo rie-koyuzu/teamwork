@@ -27,6 +27,6 @@ class Member::LogsController < ApplicationController
 
 private
   def log_params
-    params.require(:log).permit(:member_id, :log_genre_id, :title, :body, :importance)
+    params.require(:log).permit(:member_id, :log_genre_id, :title, :body, :importance, :like)
   end
 end

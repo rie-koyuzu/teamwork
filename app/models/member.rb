@@ -6,9 +6,10 @@ class Member < ApplicationRecord
 
          has_one_attached :profile_image
          has_many :logs, dependent: :nullify
-         has_many :goods, dependent: :destroy
+         has_many :likes, dependent: :destroy
          has_many :trainings, dependent: :destroy
          has_many :bookmarks, dependent: :destroy
+         has_many :training_comments, dependent: :destroy
 
        validates :last_name,  presence: true
        validates :first_name, presence: true

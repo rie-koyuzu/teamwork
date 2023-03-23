@@ -4,7 +4,6 @@
     <div class="row">
       <div class="col-xs-12">
         <%= link_to "戻る", member_members_show_path, class:"btn btn-lg btn-primary" %>
-        <%= link_to "入力", edit_member_training_path(@trainings), class:"btn btn-lg btn-primary" %>
       </div>
     </div>
      <div class="container">
@@ -21,12 +20,15 @@
          </tr>
        </thead>
        <tbody>
-         <% @training_genres.each do |training_genre| %>
+         <% @trainings.each do |training| %>
          <tr>
-           <td><%= training_genre.menu %></td>
-           <td><%= training_genre.time %> 時間</td>
+           <td><%= link_to training.title ,member_training_path(training) %></td>
+           <td><%= training.time %> 時間</td>
            <td>進捗を反映</td>
-           <td>メンバーからのコメント</td>
+           <td><% training.training_comments.each do |training_comment| %>
+                <%= training_comment.created_at.strftime('%Y/%m/%d') %><%= training_comment.comment %><br>
+                <% end %>
+              </td>
            <td>店長からのフィードバック</td>
          </tr>
        </tbody>

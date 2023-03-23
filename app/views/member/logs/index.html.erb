@@ -3,29 +3,34 @@
       <%= link_to "新規作成", new_member_log_path, class:"btn btn-lg btn-primary" %></h2><br>
 　　<div class="row">
     <% @logs.each do |log| %>
-　　<div class="card" style="width: 300px;">
-　　    <h3 class="card-header"><%= log.title %></h3>
-　　     <div class="card-body">
-		  <p class="card-text"><%= log.body %></p>
-	     </div>
-	     <div class="card-footer">
-	      <%= log.log_genre_id %><br>
-		  更新者：<%= log.member_id %>
-		   <% if @log.favorited_by?(current_member) %>
-		   <p>
-		   	 <%= link_to member_goods_path(@member), method: :delete do %>
-		   	 ♥<%= @log.goods.count %>
-		   	 <% end %>
-		   </p>
-		   	 <% else %>
-		   <p>
-		   	 <%= link_to member_goods_path(@member), method: :post do %>
-		   	 ♡<%= @log.goods.count %>
-		   	 <% end %>
-		   </p>
-		   	 <% end %>
-	     </div>
-    </div>
+    <!-- ログ一覧 -->
+　　  <div class="card" style="width: 300px;">
+　　    <h3 class="card-header"><%= link_to log.title, member_log_path(log.id) %></h3>
+　　      <div class="card-body">
+　　      	<p class="card-text"><%= log.body %></p>
+	        </div>
+	        <div class="card-footer">
+	          <%= log.log_genre_id %><br>
+		        更新者：<%= log.member_id %>
+
+		  <!--　いいね機能 -->
+		    <% if log.liked_by?(current_member) %>
+		      <p>
+		   	    <%= link_to member_logs_path(@member), method: :delete do %>
+		   	    ♥
+		   	    <%= log.likes.count %>
+		    <% end %>
+		      </p>
+		   	<% else %>
+		      <p>
+		   	    <%= link_to member_logs_path(@member), method: :post do %>
+		   	    ♡
+		   	    <%= log.likes.count %>
+		   	<% end %>
+		      </p>
+		   	<% end %>
+	      </div>
+      </div>
     <% end %>
     </div>
 	</div>

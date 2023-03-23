@@ -1,37 +1,38 @@
 <div class="row">
-    <div class="col-xs-10 col-xs-offset-1">
-
-      <h2>トレーニングメニュー編集</h2><br>
-
-    <div class="form-group col-md-10">
-    <%= form_with model: @training_genre, url: admin_training_genres_path do |f| %>
-          <%= f.label :メニュー %>
-          <%= f.text_field :menu,class: "col-md-8" %><br>
-          <%= f.label :目安時間 %>
-          <%= f.text_field :time,class: "col-md-2" %> 時間<br>
-          <%= f.submit "追加" ,class: "btn btn-primary" %>
-    <% end %>
+  <div class="col-xs-10 col-xs-offset-1">
+    <div class="row">
+    <%= form_with model: @trainings, url: admin_training_path(@training) do |f| %>
+    <div class="col-xs-5">
+     <h2>トレーニング編集</h2>
     </div>
-
-    <br>
-
-      <table class="table genre-index">
-        <thead>
-          <tr>
-            <th>TRリスト</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @training_genres.each do |training_genre| %>
+    <br><br><br>
+      <div class="col-xs-5 col-xs-offset-2">
+        <table class="new-form-table">
+          <tbody>
             <tr>
-              <td><%= training_genre.menu %></td>
-              <td><%= training_genre.time %>時間</td>
-              <td><%= link_to "編集する", edit_admin_training_genre_path(training_genre), class: "btn btn-primary" %></td>
+              <th>TR内容</th>
+              <td><%= f.text_field :title, class: "form-control" %></td>
             </tr>
-            <% end %>
-        </tbody>
-      </table>
+            <tr>
+              <th>目安時間</th>
+              <td><%= f.text_field :time, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <th>ジャンル</th>
+              <td><%= f.collection_select :training_genre_id, TrainingGenre.all ,:id, :menu, include_blank: "--選択してください--" %></td>
+            </tr>
+             <tr>
+              <th>TR内容詳細</th>
+              <td><%= f.text_area :introductio, class: "form-control" %></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="text-right">
+        <%= f.submit "更新" ,class: "btn btn-primary text-right" %>
+        </div>
+        <% end %>
+
+    </div>
   </div>
 </div>
-

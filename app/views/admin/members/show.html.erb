@@ -5,11 +5,11 @@
            <strong class="information-link">プロフィール</strong>
              <tr>
              	<td class="col-xs-2">氏名</td>
-             	<td><%= @member.last_name %><%= @member.first_name %></td>
+             	<td><%= @member.last_name %> <%= @member.first_name %></td>
              </tr>
              <tr>
               <th>English</th>
-              <td><%= @member.last_name_eng %><%= @member.first_name_eng %></td>
+              <td><%= @member.last_name_eng %> <%= @member.first_name_eng %></td>
             </tr>
             <tr>
               <th>社員番号</th>
@@ -27,6 +27,7 @@
          </table>
          <div class="row">
          	<%= link_to "編集する", edit_admin_member_path(@member), class: "btn btn-success" %>
+          <%= link_to "トレーニング", edit_admin_member_path(@member), class: "btn btn-success" %>
         </div>
        </div>
      </div>

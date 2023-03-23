@@ -14,12 +14,11 @@ class Member::MembersController < ApplicationController
 	  @member = current_member
 	end
 
-
+  #プロフィール更新
   def edit
     @member = current_member
   end
 
-  #プロフィール更新
   def update
     @member = Member.find(params[:id])
     if @member.update(member_params)
