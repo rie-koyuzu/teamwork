@@ -17,9 +17,10 @@ namespace :member do
   resources :trainings, only: [:index, :show, :edit, :update] do
     resources :training_comments, only: [:create, :update, :destroy]
   end
-  resources :logs, only: [:index, :new, :create, :show]
-  post 'like/:id' => 'likes#create', as: 'create_like'
-  delete 'like/:id' => 'likes#destroy', as: 'destroy_like'
+  resources :logs, only: [:index, :new, :create, :show, :destroy] do
+    resource :likes, only: [:create, :destroy]
+  end
+  get 'search' => 'logs#search'
   end
 
 # 店長用
@@ -38,6 +39,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
    resources :log_genres, only: [:index, :create, :edit, :update]
    resource :likes, only: [:create, :destroy]
    get 'bookmarks/index'
+   get 'search' => 'members#search'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

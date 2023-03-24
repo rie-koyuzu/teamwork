@@ -18,4 +18,8 @@ class Member < ApplicationRecord
        validates :employee_number, presence: true
        validates :affiliation, presence: true
 
+    def self.search(keyword)
+      where(["last_name like? OR first_name like? OR employee_number like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+    end
+
 end

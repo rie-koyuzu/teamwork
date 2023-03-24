@@ -1,19 +1,29 @@
 <div class="container">
 	<h2 style="margin: 10px 0;">共有ログ
       <%= link_to "新規作成", new_member_log_path, class:"btn btn-lg btn-primary" %></h2><br>
+    <!--　検索機能 -->
+      <div class="search-form">
+      	<%= form_with url: member_search_path, method: :get, local: true do |f| %>
+      	<%= f.text_field :keyword, value: @keyword %>
+      	<%= f.submit "検索" %>
+      	<% end %>
+      </div>
+      <div class="log-list">
+      	<% @logs.each do |log| %>
+      	<%= log.log_genre.name %>
+      	<% end %>
+      </div>
+   <!-- ここまで -->
+
 　　<div class="row">
     <% @logs.each do |log| %>
     <!-- ログ一覧 -->
-　　  <div class="card" style="width: 300px;">
-　　    <h3 class="card-header"><%= link_to log.title, member_log_path(log.id) %></h3>
-　　      <div class="card-body">
-　　      	<p class="card-text"><%= log.body %></p>
-	        </div>
-	        <div class="card-footer">
-	          <%= log.log_genre_id %><br>
-		        更新者：<%= log.member_id %>
-
-		  <!--　いいね機能 -->
+    <div class="card border-secondary mb-3" style="width: 18rem;">
+  <div class="card-header"><%= link_to log.title, member_log_path(log.id) %></div>
+  <div class="card-body text-secondary">
+    <h5 class="card-title"><%= log.log_genre.name %></h5>
+    <p class="card-text">更新者：<%= log.member.last_name %> <%= log.member.first_name %></p>
+    <!--　いいね機能 -->
 		    <% if log.liked_by?(current_member) %>
 		      <p>
 		   	    <%= link_to member_logs_path(@member), method: :delete do %>
@@ -29,6 +39,9 @@
 		   	<% end %>
 		      </p>
 		   	<% end %>
+  </div>
+</div>
+
 	      </div>
       </div>
     <% end %>

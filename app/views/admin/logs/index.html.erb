@@ -1,4 +1,37 @@
-伝達ログ
+<div class="container">
+	<h2 style="margin: 10px 0;">共有ログ</h2><br>
+<%= link_to "伝達ログジャンル編集", admin_log_genres_path, class: "glyphicon glyphicon-pencil btn btn-success" %><br><br>
 
-<%= link_to "伝達ログ一覧", member_logs_path, class: "glyphicon glyphicon-pencil btn btn-success" %>
-<%= link_to "伝達ログジャンル編集", admin_log_genres_path, class: "glyphicon glyphicon-pencil btn btn-success" %>
+    <!--　検索機能 -->
+      <div class="search-form">
+      	<%= form_with url: member_search_path, method: :get, local: true do |f| %>
+      	<%= f.text_field :keyword, value: @keyword %>
+      	<%= f.submit "検索" %>
+      	<% end %>
+      </div>
+      <div class="log-list">
+      	<% @logs.each do |log| %>
+      	<%= log.log_genre.name %>
+      	<% end %>
+      </div><br>
+   <!-- ここまで -->
+<div class="row">
+    <% @logs.each do |log| %>
+    <!-- ログ一覧 -->
+    <div class="card border-secondary mb-3" style="width: 18rem;">
+  <div class="card-header"><%= link_to log.title, member_log_path(log.id) %></div>
+  <div class="card-body text-secondary">
+    <h5 class="card-title"><%= log.log_genre.name %></h5>
+    <p class="card-text">更新者：<%= log.member.last_name %> <%= log.member.first_name %></p>
+     <p>投稿日時：<%= log.created_at.strftime('%Y/%m/%d') %></p>
+     <%= link_to "削除", admin_log_path(log), method: :delete %>
+
+  </div>
+</div>
+
+	      </div>
+      </div>
+    <% end %>
+    </div>
+	</div>
+</div>

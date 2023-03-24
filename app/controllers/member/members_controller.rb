@@ -20,7 +20,7 @@ class Member::MembersController < ApplicationController
   end
 
   def update
-    @member = Member.find(params[:id])
+    @member = current_member
     if @member.update(member_params)
       redirect_to member_members_show_path
     end
@@ -28,6 +28,6 @@ class Member::MembersController < ApplicationController
 
   private
   def member_params
-    params.require(:member).permit(:last_name, :first_name, :last_name_eng, :first_name_eng, :employee_number, :profile_image, :is_deleted)
+    params.require(:member).permit(:last_name, :first_name, :last_name_eng, :first_name_eng, :employee_number, :profile_image, :is_deleted, :affiliation)
   end
 end

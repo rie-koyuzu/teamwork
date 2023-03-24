@@ -2,8 +2,9 @@ class Member::LikesController < ApplicationController
 
   def create
   	log = Log.find(params[:log_id])
-    Like.create(member_id: current_member.id, log_id: params[:id])
-    redirect_to member_logs_path
+  	like = current_member.likes.new(log_id: log.id)
+  	like.seve
+    redirect_to member_logs_path(log)
   end
 
   def destroy
@@ -12,10 +13,4 @@ class Member::LikesController < ApplicationController
   	log.destroy
   	redirect_to member_logs_path
   end
-
-  private
-  def like_params
-    params.require(:like).permit(:member_id, :log_id)
-  end
-
 end

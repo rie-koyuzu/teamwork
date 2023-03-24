@@ -4,7 +4,11 @@ class Log < ApplicationRecord
 	has_many :likes, dependent: :destroy
 
     def liked_by?(member)
-      likes.where(member_id: member.id).exists?
+      likes.exists?(member_id: member.id)
+    end
+
+    def self.search(keyword)
+      where(["title like? OR body like? OR log_genre_id like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
     end
 
 end

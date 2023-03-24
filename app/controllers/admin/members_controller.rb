@@ -25,6 +25,12 @@ class Admin::MembersController < ApplicationController
     end
   end
 
+  def search
+    @members = Member.search(params[:keyword])
+    @keyword = params[:keyword]
+    render "index"
+  end
+
 
   private
   def member_params

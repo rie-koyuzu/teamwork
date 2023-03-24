@@ -22,7 +22,13 @@ class Member::LogsController < ApplicationController
 
   def show
     @log = Log.find(params[:id])
-    @member = @log.member
+    @member = Member.find_by(id: params[:id])
+  end
+
+  def search
+    @logs = Log.search(params[:keyword])
+    @keyword = params[:keyword]
+    render "index"
   end
 
 private

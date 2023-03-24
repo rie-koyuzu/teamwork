@@ -25,10 +25,7 @@
            <td><%= link_to training.title ,member_training_path(training) %></td>
            <td><%= training.time %> 時間</td>
            <td>進捗を反映</td>
-           <td><% training.training_comments.each do |training_comment| %>
-                <%= training_comment.created_at.strftime('%Y/%m/%d') %><%= training_comment.comment %><br>
-                <% end %>
-              </td>
+           <td><%= training.training_comments.count %>件</td>
            <td>店長からのフィードバック</td>
          </tr>
        </tbody>

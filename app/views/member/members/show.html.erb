@@ -11,7 +11,7 @@
       <!-- プロフィール画像-->
        <div class="col-lg-3">
          <% if @member.profile_image.attached? %>
-           <%= image_tag @member, size: "300x300" %>
+           <%= image_tag @member.profile_image, size: "300x300" %>
          <% else %>
           <%= image_tag 'no_image', size: "300x300" %>
          <% end %>

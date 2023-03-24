@@ -13,6 +13,7 @@ class DeviseCreateMembers < ActiveRecord::Migration[6.1]
       t.string :first_name_eng
       t.string :employee_number
       t.string :profile_image
+      t.string :affiliation
       t.boolean :is_deleted, default: false, null: false
 
       ## Recoverable

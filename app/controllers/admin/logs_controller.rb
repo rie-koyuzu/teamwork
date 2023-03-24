@@ -1,7 +1,8 @@
 class Admin::LogsController < ApplicationController
   def index
-    @search = Log.ransack(params[:id])
-    @items = @search.result.page(params[:page]).per(10)
+    @member = current_member
+    @log = Log.new
+    @logs = Log.all
   end
 
   def new
@@ -12,6 +13,11 @@ class Admin::LogsController < ApplicationController
     @logs = Log.find(params[:id])
   end
 
+  def destroy
+    @logs = Log.find(params[:id])
+    @log.destroy
+    redirect_to admin_logs_path
+  end
 
   private
   def log_params
