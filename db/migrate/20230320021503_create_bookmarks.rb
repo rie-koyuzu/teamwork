@@ -4,6 +4,7 @@ class CreateBookmarks < ActiveRecord::Migration[6.1]
 
       t.integer :member_id, null:false
       t.integer :log_id, null:false
+      
 
       t.timestamps
     end

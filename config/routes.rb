@@ -13,13 +13,14 @@ namespace :member do
   get 'members/edit' => 'members#edit'
   patch 'members/update' => 'members#update'
   patch 'members/withdraw' => 'members#withdraw', as: 'members_withdraw'
-  get 'bookmarks/index'
   resources :trainings, only: [:index, :show, :edit, :update] do
     resources :training_comments, only: [:create, :update, :destroy]
   end
   resources :logs, only: [:index, :new, :create, :show, :destroy] do
     resource :likes, only: [:create, :destroy]
+    resource :bookmarks, only: [:create, :destroy]
   end
+  get 'bookmarks/index'
   get 'search' => 'logs#search'
   end
 

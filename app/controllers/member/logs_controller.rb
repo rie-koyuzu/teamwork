@@ -2,8 +2,7 @@ class Member::LogsController < ApplicationController
 
   def index
     @member = current_member
-    @log = Log.new
-    @logs = Log.all
+    @logs = Log.page(params[:id])
   end
 
   def new
@@ -21,7 +20,7 @@ class Member::LogsController < ApplicationController
   end
 
   def show
-    @log = Log.find(params[:id])
+    @logs = Log.find(params[:id])
     @member = Member.find_by(id: params[:id])
   end
 
@@ -29,6 +28,12 @@ class Member::LogsController < ApplicationController
     @logs = Log.search(params[:keyword])
     @keyword = params[:keyword]
     render "index"
+  end
+
+  def destroy
+    log = Log.find(params[:id])
+    log.destroy
+    redirect_to member_logs_path
   end
 
 private

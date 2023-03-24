@@ -21,8 +21,9 @@
     <div class="card border-secondary mb-3" style="width: 18rem;">
   <div class="card-header"><%= link_to log.title, member_log_path(log.id) %></div>
   <div class="card-body text-secondary">
-    <h5 class="card-title"><%= log.log_genre.name %></h5>
+    <h5 class="card-title">ジャンル：<%= log.log_genre.name %></h5>
     <p class="card-text">更新者：<%= log.member.last_name %> <%= log.member.first_name %></p>
+
     <!--　いいね機能 -->
 		    <% if log.liked_by?(current_member) %>
 		      <p>
@@ -38,6 +39,18 @@
 		   	    <%= log.likes.count %>
 		   	<% end %>
 		      </p>
+		   	<% end %>
+
+		  <!-- ブックマーク機能 -->
+		   	<% if log.bookmarked_by?(current_member) %>
+          <td><%= link_to "ブックマークを外す", member_log_bookmarks_path(log), method: :delete %></td>
+        <% else %>
+          <td><%= link_to "ブックマーク", member_log_bookmarks_path(log), method: :post %></td>
+        <% end %><br>
+
+		  <!-- 削除 -->
+		   	<% if log.member == current_member %>
+		   	<%= link_to "削除", member_log_path(log.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 		   	<% end %>
   </div>
 </div>

@@ -2,7 +2,7 @@
 
 
 <div class="card border-secondary mb-3" style="max-width: 18rem;">
-  <div class="card-header">更新者：<%= link_to @log.member.last_name + @log.member.first_name, member_members_show_path(@member.id) %></div>
+  <div class="card-header">更新者：<%= link_to @log.member.last_name + @log.member.first_name, member_members_show_path %></div>
   <div class="card-body text-secondary">
     <h5 class="card-title"><%= @log.title %></h5>
     <p class="card-text"><%= @log.body %></p>
