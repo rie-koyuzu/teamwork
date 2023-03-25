@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 2023_03_23_031951) do
 
   create_table "logs", force: :cascade do |t|
     t.integer "member_id", null: false
+    t.integer "member_type", default: 0, null: false
     t.integer "log_genre_id", null: false
     t.string "title", null: false
     t.text "body", null: false

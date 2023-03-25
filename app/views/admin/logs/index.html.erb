@@ -8,10 +8,6 @@
       	<%= f.submit "検索" %>
       	<% end %>
       </div>
-      <div class="log-list">
-      	<% @log.each do |log| %>
-      	<%= log.log_genre.name %>
-      	<% end %>
       </div><br>
    <!-- ここまで -->
 
@@ -32,7 +28,7 @@
 		   	    ♡ <%= log.likes.count %><br><br>
 
 		  <!-- 削除 -->
-		   	  <%= link_to "削除", member_log_path(log.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+		   	  <%= link_to "削除", admin_log_path(log.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
         </div>
       </div>
     </div>

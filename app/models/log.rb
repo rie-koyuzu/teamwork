@@ -4,6 +4,8 @@ class Log < ApplicationRecord
 	has_many :likes, dependent: :destroy
 	has_many :bookmarks, dependent: :destroy
 
+	enum member_type: { member: 0, admin: 1 }
+
     def liked_by?(member)
       likes.where(member_id: member.id).exists?
     end

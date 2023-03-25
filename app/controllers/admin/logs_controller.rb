@@ -1,7 +1,7 @@
 class Admin::LogsController < ApplicationController
   def index
     @member = current_member
-    @log = Log.page(params[:id]).order("created_at DESC")
+    @log = Log.page(params[:page]).order("created_at DESC")
   end
 
   def new
@@ -18,7 +18,7 @@ class Admin::LogsController < ApplicationController
   def destroy
     @logs = Log.find(params[:id])
     @log.destroy
-    redirect_to admin_logs_path(log)
+    redirect_to admin_logs_path
   end
 
   private

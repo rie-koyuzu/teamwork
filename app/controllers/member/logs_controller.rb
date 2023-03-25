@@ -13,10 +13,16 @@ class Member::LogsController < ApplicationController
 
   def create
     @log = Log.new(log_params)
-    @log.member_id = current_member.id
-     if @log.save
-       redirect_to member_logs_path(@log)
-     end
+    if admin_signed_in?
+      @log.member_id = current_admin.id
+      @log.member_type = "admin"
+    else
+      @log.member_id = current_member.id
+      @log.member_type = "member"
+    end
+    if @log.save
+      redirect_to member_logs_path(@log)
+    end
   end
 
   def show

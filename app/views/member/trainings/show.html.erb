@@ -1,5 +1,5 @@
 
-  <h2><%= current_member.last_name + current_member.first_name %>トレーニング進捗</h2><br>
+  <h2><%= @member.last_name + @member.first_name %>トレーニング進捗</h2><br>
   <div class="container">
     <div class="row">
       <tbody>
@@ -32,19 +32,19 @@
           <% end %>
         </div>
         </div>
-
+        <!-- コメント表示 -->
         <div class="col-lg-8">
           <table border="1" width="70%" cellpadding="10">
           <tr align="center" bgcolor="#c1e4e9">
             <th width="20%">日付</th>
             <th width="55%">comment</th>
             <th width="20%" colspan="2">進捗度</th>
-          </tr><br>
+          </tr>
           <% @training_comments.each do |training_comment| %>
           <tr>
             <td><%= training_comment.created_at.strftime('%Y/%m/%d') %></td>
             <td><%= training_comment.comment %></td>
-            <td><%= training_comment.progress %></td><br>
+            <td><%= training_comment.progress %></td>
             <td><%= link_to "削除", member_training_training_comment_path(@training.id, training_comment.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
           </tr>
           <% end %>

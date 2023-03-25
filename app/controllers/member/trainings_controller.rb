@@ -8,8 +8,8 @@ class Member::TrainingsController < ApplicationController
   end
 
   def show
-    @member = current_member
     @training = Training.find(params[:id])
+    @member = Member.find(params[:member_id])
     @training_comment =TrainingComment.new
     @training_comments = @training.training_comments.where(member_id: @member.id)
     #if member_signed_in?
