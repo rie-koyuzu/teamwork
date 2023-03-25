@@ -2,7 +2,7 @@ class Member::LogsController < ApplicationController
 
   def index
     @member = current_member
-    @logs = Log.page(params[:id])
+    @log = Log.page(params[:page]).order("created_at DESC")
   end
 
   def new
@@ -20,12 +20,12 @@ class Member::LogsController < ApplicationController
   end
 
   def show
-    @logs = Log.find(params[:id])
+    @log = Log.find(params[:id])
     @member = Member.find_by(id: params[:id])
   end
 
   def search
-    @logs = Log.search(params[:keyword])
+    @log = Log.search(params[:keyword]).page(params[:id]).order("created_at DESC")
     @keyword = params[:keyword]
     render "index"
   end

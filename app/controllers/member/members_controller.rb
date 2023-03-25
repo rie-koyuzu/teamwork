@@ -11,7 +11,7 @@ class Member::MembersController < ApplicationController
 
   # マイページへのアクション
 	def show
-	  @member = current_member
+	  @member = Member.find(params[:id])
 	end
 
   #プロフィール更新

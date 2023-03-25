@@ -1,46 +1,45 @@
 <!--マイページ -->
-<h1>マイページ</h1>
-   <div class="container">
-     <div class="row">
-       <div class="col-xs-12">
-         <%= link_to "編集する", member_members_edit_path, class: "glyphicon glyphicon-pencil btn btn-success" %>
-         <%= link_to "トレーニング", member_trainings_path, class: "glyphicon glyphicon-pencil btn btn-success" %>
-       </div>
-     </div>
-     <div class="row">
-      <!-- プロフィール画像-->
-       <div class="col-lg-3">
-         <% if @member.profile_image.attached? %>
-           <%= image_tag @member.profile_image, size: "300x300" %>
-         <% else %>
-          <%= image_tag 'no_image', size: "300x300" %>
-         <% end %>
-       </div>
-      <!-- プロフィール内容-->
-       <div class="col-lg-9">
-         <table class="table table-bordered table-condensed">
-           <strong class="information-link">プロフィール</strong>
-             <tr>
-               <td class="col-lg-3">氏名</td>
-               <td><%= current_member.last_name %>&nbsp;<%= current_member.first_name %></td>
-             </tr>
-             <tr>
-               <td class="col-lg-2">KANA</td>
-               <td><%= current_member.last_name_eng %>&nbsp;<%= current_member.first_name_eng %></td>
-             </tr>
-             <tr>
-               <td class="col-lg-3">社員番号</td>
-               <td><%= current_member.employee_number %></td>
-             </tr>
-             <tr>
-               <td class="col-lg-3">所属部署</td>
-               <td><%= current_member.affiliation %></td>
-             </tr>
-             <tr>
-               <td class="col-lg-3">メールアドレス</td>
-               <td><%= current_member.email %></td>
-             </tr>
-         </table>
-       </div>
-      </div>
-   </div>
+<div class="container">
+  <div class="row">
+  <!-- プロフィール画像-->
+  <div class="col-lg-4">
+    <% if @member.profile_image.attached? %>
+    <%= image_tag @member.profile_image, size: "300x300" %>
+    <% else %>
+    <%= image_tag 'no_image', size: "300x300" %>
+    <% end %>
+  </div>
+  <!-- プロフィール内容-->
+  <div class="col-lg-5">
+    <table class="table table-bordered table-condensed">
+      <strong class="information-link">プロフィール</strong>
+        <tr>
+          <td class="col-lg-4">氏名</td>
+          <td><%= @member.last_name %>&nbsp;<%= @member.first_name %></td>
+        </tr>
+        <tr>
+          <td class="col-lg-4">KANA</td>
+          <td><%= @member.last_name_eng %>&nbsp;<%= @member.first_name_eng %></td>
+        </tr>
+        <tr>
+          <td class="col-lg-4">社員番号</td>
+          <td><%= @member.employee_number %></td>
+        </tr>
+        <tr>
+          <td class="col-lg-4">所属部署</td>
+          <td><%= @member.affiliation %></td>
+        </tr>
+        <tr>
+          <td class="col-lg-4">メールアドレス</td>
+          <td><%= @member.email %></td>
+        </tr>
+    </table>
+      <div class="row">
+    <div class="col-xs-12">
+      <%= link_to "編集する", member_members_edit_path, class: "glyphicon glyphicon-pencil btn btn-success" %>
+      <%= link_to "トレーニング", member_member_trainings_path(@member.id), class: "glyphicon glyphicon-pencil btn btn-success" %>
+    </div>
+  </div>
+  </div>
+  </div>
+</div>

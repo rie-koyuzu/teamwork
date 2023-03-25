@@ -1,41 +1,54 @@
-<div class="container">
-  <h2>トレーニング詳細</h2><br>
-      <div class="row">
-              <tbody>
-        <div class="col-lg-6">
+
+  <h2><%= current_member.last_name + current_member.first_name %>トレーニング進捗</h2><br>
+  <div class="container">
+    <div class="row">
+      <tbody>
+        <div class="col-lg-4">
           <table class="table">
-                <tr>
-                  <td>TR内容</td>
-                  <td><%= @training.title %></td>
-                </tr>
-                <tr>
-                  <td>目安時間</td>
-                  <td><%= @training.time %> 時間</td>
-                </tr>
-                <tr>
-                  <td>ジャンル</td>
-                  <td><%= @training.training_genre.menu %></td>
-                </tr>
-                <tr>
-                  <td>TR詳細</td>
-                  <td><%= @training.introductio %></td>
-                </tr>
-              </tbody>
+            <tr>
+              <td>TR内容</td>
+              <td><%= @training.title %></td>
+            </tr>
+            <tr>
+              <td>目安時間</td>
+              <td><%= @training.time %> 時間</td>
+            </tr>
+            <tr>
+              <td>ジャンル</td>
+              <td><%= @training.training_genre.menu %></td>
+            </tr>
+            <tr>
+              <td>TR詳細</td>
+              <td><%= @training.introductio %></td>
+            </tr>
           </table>
-              <div>
-                <%= form_with model: [@training, @training_comment], url: member_training_training_comments_path(@training.id), method: :post do |f| %>
-                <%= f.text_area :comment, rows: '5', placeholder: "コメント入力" %>
-                <%= f.hidden_field :progress, value: 0 %>
-                <%= f.submit "送信する" %>
-                <% end %>
-              </div>
+      </tbody>
+        <div>
+          <%= form_with model: [@training, @training_comment], url: member_training_training_comments_path(@training.id), method: :post do |f| %>
+          <%= f.select :progress, *[1..5], {:prompt => "進捗選択"} %>
+          <%= f.text_area :comment, rows: '5', placeholder: "コメント入力" %>
+          <%#= f.hidden_field :progress, value: 0 %><br><br>
+          <%= f.submit "送信する" %>
+          <% end %>
+        </div>
+        </div>
 
-              <div class="col-md-offset-1 col-lg-12 text-center">
-                <% @training.training_comments.each do |training_comment| %>
-                <%= training_comment.created_at.strftime('%Y/%m/%d') %><%= training_comment.comment %><br>
-                <% end %>
-              </div>
-
+        <div class="col-lg-8">
+          <table border="1" width="70%" cellpadding="10">
+          <tr align="center" bgcolor="#c1e4e9">
+            <th width="20%">日付</th>
+            <th width="55%">comment</th>
+            <th width="20%" colspan="2">進捗度</th>
+          </tr><br>
+          <% @training_comments.each do |training_comment| %>
+          <tr>
+            <td><%= training_comment.created_at.strftime('%Y/%m/%d') %></td>
+            <td><%= training_comment.comment %></td>
+            <td><%= training_comment.progress %></td><br>
+            <td><%= link_to "削除", member_training_training_comment_path(@training.id, training_comment.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+          </tr>
+          <% end %>
+          </table>
         </div>
       </div>
   </div>

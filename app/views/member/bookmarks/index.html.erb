@@ -1,23 +1,26 @@
-<table>
-  <caption>ブックマーク一覧</caption>
-  <thead>
-    <tr>
-      <th>投稿者名</th>
-      <th>タイトル</th>
-      <th>本文</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @bookmarks.each do |bookmark| %>
-      <tr>
-        <td><%= bookmark.log.member.last_name %></td>
-        <td>
-          <%= link_to member_log_bookmarks_path(bookmark.log) do %>
+<h1>Bookmark</h1>
+<div class="row">
+  <div class="col-lg-6">
+    <table class="table table-bordered table-condensed">
+      <thead>
+        <tr>
+          <td class="col-lg-3">投稿者名</td>
+          <td class="col-lg-4">タイトル</td>
+          <td class="col-lg-5">本文</td>
+        </tr>
+      </thead>
+    <tbody>
+      <% @bookmarks.each do |bookmark| %>
+        <tr>
+          <td class="col-lg-3"><%= bookmark.log.member.last_name + bookmark.log.member.first_name %></td>
+          <td class="col-lg-4">
+            <%= link_to member_log_path(bookmark.log) do %>
             <%= bookmark.log.title %>
-          <% end %>
-        </td>
-        <td><%= bookmark.log.body %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+            <% end %>
+          </td>
+          <td class="col-lg-5"><%= bookmark.log.body %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
+</div>

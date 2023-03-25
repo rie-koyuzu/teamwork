@@ -3,20 +3,18 @@
   <strong class="information-link">トレーニング管理</strong>
     <div class="row">
       <div class="col-xs-12">
-        <%= link_to "戻る", member_members_show_path, class:"btn btn-lg btn-primary" %>
+        <%= link_to "戻る", member_path(@member.id), class:"btn btn-lg btn-primary" %>
       </div>
     </div>
      <div class="container">
        <div class="row">
-         <div class="col-lg-12">
+         <div class="col-lg-8">
      <table class="table table-striped">
        <thead>
          <tr>
            <th>TR内容</th>
            <th>目安時間</th>
-           <th>進捗</th>
-           <th>comment</th>
-           <th>フィードバック</th>
+           <th>内容詳細</th>
          </tr>
        </thead>
        <tbody>
@@ -24,9 +22,7 @@
          <tr>
            <td><%= link_to training.title ,member_training_path(training) %></td>
            <td><%= training.time %> 時間</td>
-           <td>進捗を反映</td>
-           <td><%= training.training_comments.count %>件</td>
-           <td>店長からのフィードバック</td>
+           <td><%= training.introductio %></td>
          </tr>
        </tbody>
         <% end %>

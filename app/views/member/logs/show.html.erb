@@ -1,10 +1,28 @@
 
+<%= link_to "戻る", member_logs_path, class:"btn btn-lg btn-primary" %></h2><br><br>
 
-
-<div class="card border-secondary mb-3" style="max-width: 18rem;">
-  <div class="card-header">更新者：<%= link_to @log.member.last_name + @log.member.first_name, member_members_show_path %></div>
+<div class="card border-secondary mb-3" style="max-width: 30rem;">
+  <div class="card-header">更新者：<%= link_to @log.member.last_name + @log.member.first_name, member_path(@log.member.id) %></div>
   <div class="card-body text-secondary">
     <h5 class="card-title"><%= @log.title %></h5>
     <p class="card-text"><%= @log.body %></p>
+
+    <!--　いいね機能 -->
+    <% if @log.liked_by?(current_member) %>
+		      <p>
+		   	    <%= link_to member_log_likes_path(@log), method: :delete do %>
+		   	    ♥
+		   	    <%= @log.likes.count %>
+		      <% end %>
+		      </p>
+		   	  <% else %>
+		      <p>
+		   	    <%= link_to member_log_likes_path(@log), method: :post do %>
+		   	    ♡
+		   	    <%= @log.likes.count %>
+		   	  <% end %>
+		      </p>
+		   	  <% end %>
+
   </div>
 </div>

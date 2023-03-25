@@ -2,21 +2,24 @@ class Member::TrainingsController < ApplicationController
 
   def index
     @trainings = Training.all
+    @member = Member.find(params[:member_id])
+    #@trainings = @member.trainings
     @training_comment =TrainingComment.new
   end
 
   def show
+    @member = current_member
     @training = Training.find(params[:id])
     @training_comment =TrainingComment.new
+    @training_comments = @training.training_comments.where(member_id: @member.id)
     #if member_signed_in?
       #@training_comment = TrainingComment.where(member_id:[current_member.id])
     #end
   end
 
   def edit
-    @trainings = Training.all
-    @training = Training.new
-    @training_genres = TrainingGenre.all
+    @member = current_member
+    @training = Training.find(params[:id])
   end
 
   private

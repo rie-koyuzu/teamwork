@@ -6,15 +6,18 @@ class Member::TrainingCommentsController < ApplicationController
     comment = current_member.training_comments.new(training_comment_params)
     comment.training_id = training.id
     comment.training_genre_id = training.training_genre_id
-
     comment.save!
       redirect_to member_trainings_path
   end
 
-  def update
-  end
-
+# コメントを削除する
   def destroy
+    training = Training.find(params[:training_id])
+    comment = TrainingComment.find(params[:id])
+    comment.destroy
+    #comment.training_id = training.id
+    #trainng.comment = destroy
+    redirect_to member_training_path(training.id)
   end
 
   def training_comment_params

@@ -9,11 +9,12 @@ devise_for :members,skip: [:passwords], controllers: {
 }
 
 namespace :member do
-  get 'members/show' => 'members#show'
+  get 'members/:id/show' => 'members#show'
   get 'members/edit' => 'members#edit'
   patch 'members/update' => 'members#update'
   patch 'members/withdraw' => 'members#withdraw', as: 'members_withdraw'
-  resources :trainings, only: [:index, :show, :edit, :update] do
+  get 'trainings/:member_id/index' =>'trainings#index', as:'member_trainings'
+  resources :trainings, only: [:show, :edit, :update] do
     resources :training_comments, only: [:create, :update, :destroy]
   end
   resources :logs, only: [:index, :new, :create, :show, :destroy] do

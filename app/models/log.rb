@@ -8,12 +8,12 @@ class Log < ApplicationRecord
       likes.where(member_id: member.id).exists?
     end
 
-    def bookmarked_by?(member)
-      bookmarks.where(member_id: member).exists?
+    def self.search(keyword)
+      joins(:log_genre).where(["title like? OR log_genres.name like?", "%#{keyword}%", "%#{keyword}%"])
     end
 
-    def self.search(keyword)
-      where(["title like? OR body like? OR log_genre_id like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+    def bookmarked_by?(member)
+      bookmarks.where(member_id: member).exists?
     end
 
 end

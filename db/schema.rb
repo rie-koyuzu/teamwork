@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 2023_03_23_031951) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "member_id", null: false
-    t.integer "log_id", null: false
+    t.integer "member_id"
+    t.integer "log_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
