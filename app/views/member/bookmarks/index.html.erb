@@ -12,7 +12,9 @@
     <tbody>
       <% @bookmarks.each do |bookmark| %>
         <tr>
-          <td class="col-lg-3"><%= bookmark.log.member.last_name + bookmark.log.member.first_name %></td>
+          <td class="col-lg-3">
+            <%= bookmark.log.member.last_name + bookmark.log.member.first_name %>
+          </td>
           <td class="col-lg-4">
             <%= link_to member_log_path(bookmark.log) do %>
             <%= bookmark.log.title %>

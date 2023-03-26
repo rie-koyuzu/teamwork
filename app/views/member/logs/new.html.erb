@@ -1,24 +1,28 @@
-ログ新規作成
-
+<head>
+	<script src="https://kit.fontawesome.com/42ccd6fdce.js" crossorigin="anonymous"></script>
+</head>
+<div class="container">
+  <h1>NEW<i class="fa-solid fa-pen"></i></h1><br>
+  <div class ="row">
+    <div class="col-lg-12">
 <%= form_with model: @log, url: member_logs_path do |f| %>
-
   <tr>
    <th>ジャンル</th>
    <td><%= f.collection_select :log_genre_id, LogGenre.all ,:id, :name, include_blank: "--選択してください--" %></td>
   </tr>
-  <br>
-  <br>
+  <br><br>
   <tr>
    <th>タイトル</th>
    <td><%= f.text_field :title %></td>
   </tr>
-  <br>
-  <br>
-<!-- ここに重要度選択のラジオボタンを作成したい -->
+  <br><br>
   <tr>
    <th>共有内容</th>
    <td><%= f.text_area :body %></td>
   </tr>
-  <br>
+  <br><br>
   <%= f.submit '投稿' %>
 <% end %>
+</div>
+</div>
+</div>

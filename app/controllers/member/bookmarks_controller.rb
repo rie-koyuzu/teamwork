@@ -9,9 +9,9 @@ class Member::BookmarksController < ApplicationController
     @log = Log.find(params[:log_id])
     bookmark = @log.bookmarks.new(member_id: current_member.id)
     if bookmark.save
-      redirect_to request.referer
+      redirect_to member_logs_path
     else
-      redirect_to request.referer
+      redirect_to member_logs_path
     end
   end
 
@@ -20,9 +20,9 @@ class Member::BookmarksController < ApplicationController
     bookmark = @log.bookmarks.find_by(member_id: current_member.id)
     if bookmark.present?
         bookmark.destroy
-        redirect_to request.referer
+        redirect_to member_logs_path
     else
-        redirect_to request.referer
+        redirect_to member_logs_path
     end
   end
 

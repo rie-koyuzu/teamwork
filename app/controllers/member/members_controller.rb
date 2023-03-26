@@ -22,8 +22,16 @@ class Member::MembersController < ApplicationController
   def update
     @member = current_member
     if @member.update(member_params)
-      redirect_to member_members_show_path
+      redirect_to member_path(@member)
     end
+  end
+
+  # 退職アクション
+  def withdraw
+    @member = current_customer
+    @member.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
   end
 
   private

@@ -1,59 +1,59 @@
-<h2>新規登録</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<head>
+	<script src="https://kit.fontawesome.com/42ccd6fdce.js" crossorigin="anonymous"></script>
+</head>
+<h2><i class="fa-solid fa-user-plus"></i> Sign-up</h2><br>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "member/shared/error_messages", resource: resource %>
-
-
-  <div class="field">
-  <%= f.label :last_name %><br>
-  <%= f.text_field :last_name %>
-  </div>
-
-  <div class="field">
-  <%= f.label :first_name %><br>
-  <%= f.text_field :first_name %>
-  </div>
-
-  <div class="field">
-  <%= f.label :last_name_eng %><br>
-  <%= f.text_field :last_name_eng %>
-  </div>
-
-  <div class="field">
-  <%= f.label :first_name_eng %><br>
-  <%= f.text_field :first_name_eng %>
-  </div>
-
-  <div class="field">
-  <%= f.label :employee_number %><br>
-  <%= f.text_field :employee_number %>
-  </div>
-
-  <div class="field">
-  <%= f.label :affiliation %><br>
-  <%= f.text_field :affiliation %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
+  <div class="row">
+    <label class="col-lg-3">名前</label>
+    <div class="col-lg-3">
+      <%= f.text_field :last_name,autoforcus: true, autocomplete: "last_name",  placeholder: "(姓)"  %>
+      <br><br>
+      <%= f.text_field :first_name,autoforcus: true, autocomplete: "first_name",  placeholder: "(名)" %>
+    </div>
+  </div><br>
+  <div class="row">
+    <label class="col-lg-3">English</label>
+    <div class="col-lg-3">
+      <%= f.text_field :last_name_eng,autoforcus: true, autocomplete: "last_name_eng",  placeholder: "last_name" %>
+      <br><br>
+      <%= f.text_field :first_name_eng,autoforcus: true, autocomplete: "first_name_eng",  placeholder: "first_name" %>
+    </div>
+  </div><br>
+  <div class="row">
+    <label class="col-lg-3">社員番号</label>
+    <div class="col-lg-3">
+      <%= f.text_field :employee_number, autofocus: true, autocomplete: "employee_numbe" %>
+      </div>
+  </div><br>
+  <div class="row">
+    <label class="col-lg-3">所属部署</label>
+    <div class="col-lg-3">
+      <%= f.text_field :affiliation, autofocus: true, autocomplete: "affiliation" %>
+      </div>
+  </div><br>
+  <div class="row">
+    <label class="col-lg-3">メールアドレス</label>
+    <div class="col-lg-3">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email"  %>
+    </div>
+  </div><br>
+  <div class="row">
+    <label class="col-lg-3">パスワード
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+    <em>(<%= @minimum_password_length %>文字以上)</em>
+    <% end %></label>
+  <div class="col-lg-3">
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
+  </div><br>
+  <div class="row">
+    <label class="col-lg-3">パスワード（確認用）</label>
+    <div class="col-lg-3">
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+  </div><br><br>
   <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+    <%= f.submit "新規登録", class: "btn btn-success" %>
+  </div><br>
 <% end %>
-<%= render "member/shared/links" %>

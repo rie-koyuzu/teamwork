@@ -33,9 +33,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
  namespace :admin do
    root :to => 'admins/top#top'
    resources :members, only: [:index, :show, :edit, :update]
-   resources :trainings, only: [:index, :new, :show, :edit, :update, :create] do
-     resources :feedback, only: [:show, :edit]
-   end
+   resources :trainings, only: [:index, :new, :show, :edit, :update, :create, :destroy]
    resources :training_genres, only: [:index, :create, :edit, :update]
    resources :logs, only: [:index, :new, :create, :show, :destroy]
    resources :log_genres, only: [:index, :create, :edit, :update]

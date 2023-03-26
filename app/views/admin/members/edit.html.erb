@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-xs-12">
-      <h3><strong>メンバー情報編集</strong></h3>
-      <%= form_with model: @member, url: admin_member_path ,method: :PATCH do |f| %>
+      <h3><strong>Member edit</strong></h3><br>
+      <%= form_with model: @member, url: admin_member_path(@member) ,method: :PATCH do |f| %>
       	<div class="col-xs-12">
       		<%= f.label :"氏名", class: "col-sm-3 control-label", style: "margin: 10px;" %>
           <%= f.text_field :last_name, class: "last_name col-sm-3 form-control-static name", style: "margin: 10px;" %>
@@ -28,8 +28,9 @@
           <%= f.label :"ステータス", class: "col-sm-3 control-label", style: "margin: 10px;" %>
           <%= f.select :is_deleted, [["在籍中",false], ["退職済み",true]], class: "col-sm-6 form-control-static", style: "margin: 10px;" %>
         </div>
+        <div class="actions col-xs-10 col-xs-offset-2">
+    		<%= f.submit "保存する", class: "btn btn-primary", style: "margin: 10px;" %>
+        </div>
+      <% end %>
     </div>
-    <div class="actions col-xs-10 col-xs-offset-2">
-    		<%= f.submit "編集内容を保存する", class: "btn btn-primary col-sm-12", style: "margin: 10px;" %>
-    </div>
-    <% end %>
+  </div>

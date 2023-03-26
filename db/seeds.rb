@@ -10,5 +10,7 @@
 Admin.create!(
 	employee_number: '100000',
 	password: 11111111,
-	email: 'test@1.com'
+	email: 'test@1.com',
+	last_name: '田中',
+	first_name: '太郎'
 )

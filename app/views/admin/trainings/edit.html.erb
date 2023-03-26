@@ -1,11 +1,14 @@
+<head>
+	<script src="https://kit.fontawesome.com/42ccd6fdce.js" crossorigin="anonymous"></script>
+</head>
 <div class="row">
   <div class="col-xs-10 col-xs-offset-1">
     <div class="row">
-    <%= form_with model: @trainings, url: admin_training_path(@training) do |f| %>
+    <%= form_with model: @training, url: admin_trainings_path(@training), method: :post do |f| %>
     <div class="col-xs-5">
-     <h2>トレーニング編集</h2>
+     <h2><i class="fa-solid fa-dumbbell"></i> Training Edit <i class="fa-solid fa-dumbbell"></i></h2>
     </div>
-    <br><br><br>
+    <br>
       <div class="col-xs-5 col-xs-offset-2">
         <table class="new-form-table">
           <tbody>

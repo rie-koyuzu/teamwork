@@ -7,7 +7,7 @@ class Member::TrainingCommentsController < ApplicationController
     comment.training_id = training.id
     comment.training_genre_id = training.training_genre_id
     comment.save!
-    redirect_to member_training_path(training.id)
+    redirect_to member_training_path(training.id, member_id: params[:member_id])
   end
 
 # コメントを削除する
@@ -17,7 +17,7 @@ class Member::TrainingCommentsController < ApplicationController
     comment.destroy
     #comment.training_id = training.id
     #trainng.comment = destroy
-    redirect_to member_training_path(training.id)
+    redirect_to member_training_path(training.id, member_id: params[:member_id])
   end
 
   def training_comment_params

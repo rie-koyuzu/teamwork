@@ -1,4 +1,5 @@
 class Admin::MembersController < ApplicationController
+
   def index
 		if params[:is_deleted]
 			member = Member.where(is_deleted: true)
@@ -19,7 +20,7 @@ class Admin::MembersController < ApplicationController
   def update
     @member = Member.find(params[:id])
     if @member.update(member_params)
-      redirect_to admin_member_path(@member)
+      redirect_to admin_member_path
     else
       edit_admin_member_path(@member)
     end

@@ -1,29 +1,30 @@
 <header class="shadow-sm">
+  <script src="https://kit.fontawesome.com/42ccd6fdce.js" crossorigin="anonymous"></script>
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light">
        <div class="container">
-         <a class="navbar-brand p-3" href="/">HELLO！</a>
+         <a class="navbar-brand p-3" href="/"><i class="fa-regular fa-paper-plane fa-xl" style="color: #5dc076;"></i> HELLO！</a>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
 
         <% if member_signed_in? %>
-          <!--カスタマーがログインしている時 -->
-          <li class="nav-item"><%= link_to  current_member.employee_number + current_member.last_name + current_member.first_name, member_path(current_member.id), class: "btn btn-Light" %></li>
-          <li class="nav-item"><%= link_to "伝達ログ", member_logs_path, class: "btn btn-Light" %></li>
-          <li class="nav-item"><%= link_to "ブックマーク", member_bookmarks_index_path, class: "btn btn-Light" %></li>
-          <li class="nav-item"><%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "btn btn-Light" %></li>
+          <!--メンバーがログインしている時 -->
+          <li class="nav-item"><i class="fa-solid fa-crown"></i><%= link_to  current_member.employee_number + current_member.last_name + current_member.first_name, member_path(current_member.id), class: "btn btn-Light" %></li>
+          <li class="nav-item"><i class="fa-brands fa-sketch"></i><%= link_to "Log", member_logs_path, class: "btn btn-Light" %></li>
+          <li class="nav-item"><i class="fa-brands fa-diaspora fa-spin" style="color: #467fe2;"></i><%= link_to "Bookmark", member_bookmarks_index_path, class: "btn btn-Light" %></li>
+          <li class="nav-item"><i class="fa-brands fa-sketch"></i><%= link_to "Log out", destroy_member_session_path, method: :delete, class: "btn btn-Light" %><i class="fa-solid fa-crown"></i></li>
 
         <% elsif admin_signed_in? %>
           <!-- 管理者がログインしている時 -->
-          <li class="nav-item"><%= link_to "伝達ログ", admin_logs_path, class: "btn btn-Light" %></li>
-          <li class="nav-item"><%= link_to "メンバー一覧", admin_members_path, class: "btn btn-Light" %></li>
-          <li class="nav-item"><%= link_to "トレーニング管理", admin_trainings_path, class: "btn btn-Light" %></li>
-          <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-Light" %></li>
+          <li class="nav-item"><i class="fa-solid fa-crown"></i><%= link_to "Log", admin_logs_path, class: "btn btn-Light" %></li>
+          <li class="nav-item"><i class="fa-brands fa-sketch"></i><%= link_to "Member", admin_members_path, class: "btn btn-Light" %></li>
+          <li class="nav-item"><i class="fa-brands fa-diaspora fa-spin" style="color: #467fe2;"></i><%= link_to "Training", admin_trainings_path, class: "btn btn-Light" %></li>
+          <li class="nav-item"><i class="fa-brands fa-sketch"></i><%= link_to "Log out", destroy_admin_session_path, method: :delete, class: "btn btn-Light" %><i class="fa-solid fa-crown"></i></li>
 
         <% else %>
           <!-- ログインしていない時 -->
-          <li class="nav-item"><%= link_to "新規登録", new_member_registration_path, class: "btn btn-Light" %></li>
-          <li class="nav-item"><%= link_to "ログイン", new_member_session_path, class: "btn btn-Light" %></li>
+          <li class="nav-item"><i class="fa-solid fa-crown"></i><%= link_to "新規登録", new_member_registration_path, class: "btn btn-Light" %></li>
+          <li class="nav-item"><i class="fa-brands fa-diaspora fa-spin" style="color: #467fe2;"></i><%= link_to "ログイン", new_member_session_path, class: "btn btn-Light" %><i class="fa-solid fa-crown"></i></li>
         <% end %>
       </ul>
     </div>

@@ -10,14 +10,28 @@ class Admin::LogsController < ApplicationController
     @member = current_member
   end
 
+  def create
+    @log = Log.new(log_params)
+    if admin_signed_in?
+      @log.member_id = current_admin.id
+      @log.member_type = "admin"
+    else
+      @log.member_id = current_member.id
+      @log.member_type = "member"
+    end
+    if @log.save
+      redirect_to admin_logs_path
+    end
+  end
+
   def show
     @log = Log.find(params[:id])
     @member = Member.find_by(id: params[:id])
   end
 
   def destroy
-    @logs = Log.find(params[:id])
-    @log.destroy
+    logs = Log.find(params[:id])
+    logs.destroy
     redirect_to admin_logs_path
   end
 
