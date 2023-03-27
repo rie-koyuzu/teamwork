@@ -6,8 +6,12 @@ class Member::TrainingCommentsController < ApplicationController
     comment = current_member.training_comments.new(training_comment_params)
     comment.training_id = training.id
     comment.training_genre_id = training.training_genre_id
-    comment.save!
-    redirect_to member_training_path(training.id, member_id: params[:member_id])
+    if comment.save
+      redirect_to member_training_path(training.id, member_id: params[:member_id])
+    else
+       flash[:training_created_error] = "入力してください"
+      redirect_to member_training_path(training.id, member_id: params[:member_id])
+    end
   end
 
 # コメントを削除する

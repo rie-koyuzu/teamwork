@@ -2,7 +2,7 @@
 	<script src="https://kit.fontawesome.com/42ccd6fdce.js" crossorigin="anonymous"></script>
 </head>
 <div class="row">
-  <div class="col-xs-10 col-xs-offset-1">
+  <div class="col-xs-8 col-xs-offset-1">
     <h2>What kind of Training genre?</h2><br>
     <div class="form-group col-md-10">
       <%= form_with model: @training_genre, url: admin_training_genres_path do |f| %>
@@ -22,10 +22,14 @@
             <tr>
               <td><%= training_genre.menu %></td>
               <td>
-                <%= link_to edit_admin_training_genre_path(training_genre), class: "btn btn btn-info text-white" do %>
+            <!-- 新規作成 -->
+                <%= link_to edit_admin_training_genre_path(training_genre), class: "btn btn btn-success text-white" do %>
                 <i class="fa-regular fa-pen-to-square"></i>
                 <% end %>
-                <%#= link_to "編集する", edit_admin_training_genre_path(training_genre), class: "btn btn-primary" %>
+            <!-- 削除 -->
+                <%= link_to admin_training_genre_path(training_genre), class: "btn btn btn-info text-white", method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+                <i class="far fa-trash-alt"></i>
+                <% end %>
               </td>
             </tr>
             <% end %>

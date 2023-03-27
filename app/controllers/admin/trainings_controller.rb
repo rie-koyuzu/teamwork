@@ -1,4 +1,5 @@
 class Admin::TrainingsController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @trainings = Training.all
@@ -28,6 +29,9 @@ class Admin::TrainingsController < ApplicationController
   def create
     @trainings = Training.new(training_params)
     if @trainings.save
+      redirect_to admin_trainings_path(@training)
+    else
+       flash[:training_created_error] = "入力してください"
       redirect_to admin_trainings_path(@training)
     end
   end

@@ -5,7 +5,7 @@
     <div class="col-xs-10 col-xs-offset-1">
       <h2>Training genre edit <i class="fa-regular fa-pen-to-square"></i></h2><br>
        <div class="edit-traininggenre-form">
-       	<%= form_with model: @training_genre, url: admin_training_genre_path do |f| %>
+       	<%= form_with model: @training_genre, url: admin_training_genre_path, method: :patch do |f| %>
        	  <%= f.label :"Genre" %>
        	  <%= f.text_field :menu,class: "col-md-8" %><br>
        	  <br>

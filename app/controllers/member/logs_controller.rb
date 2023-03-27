@@ -22,6 +22,9 @@ class Member::LogsController < ApplicationController
     end
     if @log.save
       redirect_to member_logs_path(@log)
+    else
+      flash[:log_created_error] = "内容を入力してください"
+      redirect_to member_logs_path(@log)
     end
   end
 

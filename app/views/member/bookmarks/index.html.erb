@@ -1,26 +1,29 @@
-<h1>Bookmark</h1>
+<head>
+	<script src="https://kit.fontawesome.com/42ccd6fdce.js" crossorigin="anonymous"></script>
+</head>
+<h1><i class="fa-solid fa-book-open"></i> Book mark</h1>
 <div class="row">
-  <div class="col-lg-6">
+  <div class="col-lg-8">
     <table class="table table-bordered table-condensed">
       <thead>
         <tr>
-          <td class="col-lg-3">投稿者名</td>
-          <td class="col-lg-4">タイトル</td>
-          <td class="col-lg-5">本文</td>
+          <td class="col-lg-2">投稿者名</td>
+          <td class="col-lg-2">タイトル</td>
+          <td class="col-lg-4">本文</td>
         </tr>
       </thead>
     <tbody>
       <% @bookmarks.each do |bookmark| %>
         <tr>
-          <td class="col-lg-3">
+          <td class="col-lg-2">
             <%= bookmark.log.member.last_name + bookmark.log.member.first_name %>
           </td>
-          <td class="col-lg-4">
+          <td class="col-lg-2">
             <%= link_to member_log_path(bookmark.log) do %>
             <%= bookmark.log.title %>
             <% end %>
           </td>
-          <td class="col-lg-5"><%= bookmark.log.body %></td>
+          <td class="col-lg-4"><%= bookmark.log.body %></td>
         </tr>
       <% end %>
     </tbody>

@@ -34,9 +34,9 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
    root :to => 'admins/top#top'
    resources :members, only: [:index, :show, :edit, :update]
    resources :trainings, only: [:index, :new, :show, :edit, :update, :create, :destroy]
-   resources :training_genres, only: [:index, :create, :edit, :update]
+   resources :training_genres, only: [:index, :create, :edit, :update, :destroy]
    resources :logs, only: [:index, :new, :create, :show, :destroy]
-   resources :log_genres, only: [:index, :create, :edit, :update]
+   resources :log_genres, only: [:index, :create, :edit, :update, :destroy]
    resource :likes, only: [:create, :destroy]
    get 'bookmarks/index'
    get 'search' => 'members#search'

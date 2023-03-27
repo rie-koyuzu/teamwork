@@ -1,4 +1,5 @@
 class Admin::TrainingGenresController < ApplicationController
+  before_action :authenticate_admin!
 
   # トレーニングジャンル管理
   def index
@@ -10,6 +11,9 @@ class Admin::TrainingGenresController < ApplicationController
     @training_genre = TrainingGenre.new(training_genre_params)
     if @training_genre.save
       redirect_to admin_training_genres_path
+    else
+     flash[:training_genre_created_error] = "ジャンル名を入力してください"
+      redirect_to admin_training_genres_path
     end
   end
 
@@ -20,8 +24,14 @@ class Admin::TrainingGenresController < ApplicationController
   def update
     @training_genre = TrainingGenre.find(params[:id])
     if @training_genre.update(training_genre_params)
-      redirect_to admin_trainings_path
+      redirect_to admin_training_genres_path
     end
+  end
+
+  def destroy
+    training_genres = TrainingGenre.find(params[:id])
+    training_genres.destroy
+    redirect_to admin_training_genres_path
   end
 
   private

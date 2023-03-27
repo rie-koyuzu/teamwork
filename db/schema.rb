@@ -62,15 +62,6 @@ ActiveRecord::Schema.define(version: 2023_03_23_031951) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "feedbacks", force: :cascade do |t|
-    t.integer "admin_id", null: false
-    t.integer "training_genre_id", null: false
-    t.integer "training_id", null: false
-    t.text "body", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "homes", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -140,7 +131,6 @@ ActiveRecord::Schema.define(version: 2023_03_23_031951) do
   create_table "trainings", force: :cascade do |t|
     t.integer "member_id"
     t.integer "training_genre_id", null: false
-    t.text "feedback"
     t.integer "progress", default: 0, null: false
     t.string "title", null: false
     t.integer "time", null: false

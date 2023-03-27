@@ -4,6 +4,11 @@ class Log < ApplicationRecord
 	has_many :likes, dependent: :destroy
 	has_many :bookmarks, dependent: :destroy
 
+	validates :title, presence: true
+	validates :log_genre_id, presence: true
+	validates :body, presence: true
+
+
 	enum member_type: { member: 0, admin: 1 }
 
     def liked_by?(member)

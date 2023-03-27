@@ -1,4 +1,6 @@
 class Admin::LogsController < ApplicationController
+    before_action :authenticate_admin!
+
   def index
     @member = current_member
     @log = Log.page(params[:page]).order("created_at DESC")
