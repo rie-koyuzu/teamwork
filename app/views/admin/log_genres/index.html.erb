@@ -4,7 +4,8 @@
 </head>
 <div class="row">
   <div class="col-xs-10 col-xs-offset-1">
-    <h2>Log-Genre <i class="fa-solid fa-ghost fa-beat" style="color: #4cee11;"></i></h2><br><div class="form-group col-md-10">
+    <h2>Log-Genre <i class="fa-solid fa-ghost fa-beat" style="color: #4cee11;"></i></h2><br>
+    <div class="form-group col-md-10">
     <%= form_with model: @log_genre, url: admin_log_genres_path do |f| %>
     <%= f.label :"Genre name" %>
     <%= f.text_field :name, class: "col-md-4" %>
