@@ -61,6 +61,7 @@ gem "enum_help"
 gem 'ransack'
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
+gem 'rspec-rails'
 
 gem 'dotenv-rails'
 group :production do
