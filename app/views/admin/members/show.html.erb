@@ -1,42 +1,10 @@
-<!--マイページ -->
+<!--admin側 マイページ -->
 <head>
 	<script src="https://kit.fontawesome.com/42ccd6fdce.js" crossorigin="anonymous"></script>
 </head>
 <div class="container">
   <div class="row">
-  <!-- プロフィール画像-->
-  <div class="col-lg-4">
-    <% if @member.profile_image.attached? %>
-    <%= image_tag @member.profile_image, size: "300x300" %>
-    <% else %>
-    <%= image_tag asset_path('no_image.jpg'), size: "300x300" %>
-    <% end %>
-  </div>
-  <!-- プロフィール内容-->
-  <div class="col-lg-5">
-    <table class="table table-bordered table-condensed">
-      <strong class="information-link"><i class="fa-regular fa-image"></i> Profile</strong>
-        <tr>
-          <td class="col-lg-4">氏名</td>
-          <td><%= @member.last_name %>&nbsp;<%= @member.first_name %></td>
-        </tr>
-        <tr>
-          <td class="col-lg-4">KANA</td>
-          <td><%= @member.last_name_eng %>&nbsp;<%= @member.first_name_eng %></td>
-        </tr>
-        <tr>
-          <td class="col-lg-4">社員番号</td>
-          <td><%= @member.employee_number %></td>
-        </tr>
-        <tr>
-          <td class="col-lg-4">所属部署</td>
-          <td><%= @member.affiliation %></td>
-        </tr>
-        <tr>
-          <td class="col-lg-4">メールアドレス</td>
-          <td><%= @member.email %></td>
-        </tr>
-    </table>
+ <%= render 'layouts/member', member: @member %>
       <div class="row">
     <div class="col-xs-12">
       <%= link_to "編集する", edit_admin_member_path(@member), class: "glyphicon glyphicon-pencil btn btn-success" %>
